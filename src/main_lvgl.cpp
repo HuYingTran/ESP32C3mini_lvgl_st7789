@@ -2,6 +2,7 @@
 #include <lvgl.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7789.h>
+#include "ui/ui.h"               // UI export từ EEZ Studio
 
 Adafruit_ST7789 tft = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST); // Software SPI
 
@@ -31,23 +32,20 @@ void setup() {
     lv_display_set_flush_cb(disp, my_disp_flush);
     lv_display_set_buffers(disp, buf1, NULL, sizeof(buf1), LV_DISPLAY_RENDER_MODE_PARTIAL);
 
-    // Example LVGL widget: label with border
-    lv_obj_t *cont = lv_obj_create(lv_screen_active());
+    // --- Load EEZ UI ---
+    ui_init();
 
-        lv_obj_set_size(cont, 220, 100); // Tăng kích thước widget
-        lv_obj_set_style_border_width(cont, 4, 0);
-        lv_obj_set_style_border_color(cont, lv_palette_main(LV_PALETTE_BLUE), 0);
-        lv_obj_set_style_pad_all(cont, 20, 0); // Padding lớn hơn
-
-    lv_obj_t *label = lv_label_create(cont);
-    lv_label_set_text(label, "Hello LVGL!");
-    lv_obj_set_style_text_font(label, &lv_font_montserrat_28, 0); // Tăng size chữ
-    lv_obj_center(label);
-
-    lv_obj_center(cont);
 }
 
+uint32_t lastTick = 0;
+
 void loop() {
-    lv_timer_handler();
-    delay(5);
+   uint32_t now = millis();
+  lv_tick_inc(now - lastTick);
+  lastTick = now;
+
+  lv_timer_handler();
+  ui_tick(); // EEZ Flow update
+
+  delay(1); // giảm delay để UI mượt hơn
 }

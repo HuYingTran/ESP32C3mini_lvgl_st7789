@@ -41,9 +41,23 @@ lv_conf.h             # File cấu hình LVGL
    - Nạp:  `PlatformIO: Upload`
 4. Màn hình sẽ hiển thị giao diện LVGL mẫu
 
+![image](images/image.png)
+
 ## Ghi chú
 - Nếu gặp lỗi multiple definition, hãy chỉ giữ lại 1 file main_lvgl.cpp trong thư mục src.
 - Có thể chỉnh sửa giao diện trong file `src/main_lvgl.cpp`.
+
+## Branch EEZ Studio
+![eez studio](images/image%20eez.png)
+Nếu bạn muốn phát triển giao diện với EEZ Studio, hãy tạo một branch mới:
+
+```sh
+git checkout -b "EEZ_Studio"
+```
+
+Tất cả code, file cấu hình, hoặc tài liệu liên quan đến EEZ Studio nên được commit vào branch này. Điều này giúp tách biệt code giao diện EEZ Studio với code LVGL/Arduino thuần.
+
+Khi cần cập nhật README hoặc hướng dẫn riêng cho EEZ Studio, hãy bổ sung vào branch này.
 
 ---
 Tác giả: Trần Văn Huynh
