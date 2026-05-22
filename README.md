@@ -41,14 +41,14 @@ lv_conf.h             # File cấu hình LVGL
    - Nạp:  `PlatformIO: Upload`
 4. Màn hình sẽ hiển thị giao diện LVGL mẫu
 
-![image](images/image.png)
+<img src="images/image.png" width="40%" />
 
 ## Ghi chú
 - Nếu gặp lỗi multiple definition, hãy chỉ giữ lại 1 file main_lvgl.cpp trong thư mục src.
 - Có thể chỉnh sửa giao diện trong file `src/main_lvgl.cpp`.
 
 ## Branch EEZ Studio
-![eez studio](images/image%20eez.png)
+<img src="images/image eez.png" width="40%" />
 Nếu bạn muốn phát triển giao diện với EEZ Studio, hãy tạo một branch mới:
 
 ```sh
